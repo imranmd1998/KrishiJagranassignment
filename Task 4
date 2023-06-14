@@ -1,0 +1,38 @@
+Vendor registration and Product CRUD Feature.
+
+To demonstrate the Vendor registration and Product CRUD (Create, Read, Update, Delete) features, we'll use ASP.NET Core to build a web application. We'll create a simple application that allows vendors to register and manage their products. Here's an outline of the steps involved:
+
+1.Create a new ASP.NET Core Web Application project in Visual Studio or your preferred development environment.
+
+2.Set up the necessary database connectivity. You can use Entity Framework Core as an ORM to handle database operations. Install the required NuGet packages, configure the database connection string, and set up the database context.
+
+3.Implement the Vendor Registration feature:
+a>Create a "Vendor" model class to represent the vendor entity. Include properties such as VendorID, Name, Email, Password, etc.
+
+b>Create a "VendorController" with actions for registration, login, and account management.
+
+c>Implement the necessary views and forms for vendor registration, login, and account management using Razor Pages or MVC views.
+
+4.Implement the Product CRUD feature:
+
+a>Create a "Product" model class to represent the product entity. Include properties such as ProductID, Name, Description, Price, VendorID (foreign key), etc.
+
+b>Create a "ProductController" with actions for Create, Read, Update, and Delete operations on products.
+c>Implement the necessary views and forms for creating, reading, updating, and deleting products.
+
+5.Set up the necessary routes and navigation:
+
+a>Define appropriate routes in the routing configuration to map the URLs to the corresponding actions in the controllers.
+
+b>Create navigation links in the views to allow easy access to the vendor registration and product CRUD features.
+
+6.Implement validation and security measures:
+
+a>Implement input validation to ensure that the user input meets the required criteria.
+
+b>Apply security measures such as authentication and authorization to restrict access to certain actions or views only to authenticated vendors.
+
+7.Test the application:
+
+a>Run the application and test the vendor registration process, product creation, retrieval, update, and deletion functionalities to ensure they work as expected.
+b>Perform both positive and negative testing scenarios to validate the application's behavior under different conditions.
