@@ -1,0 +1,88 @@
+8)	Write a few unit tests for important methods..
+Solution:
+
+using NUnit.Framework;
+
+[TestFixture]
+public class ProductServiceTests
+{
+    private ProductService productService;
+
+    [SetUp]
+    public void Setup()
+    {
+        // Set up any necessary dependencies or initialize the ProductService instance
+        productService = new ProductService();
+    }
+
+    [Test]
+    public void GetProductById_ExistingProductId_ReturnsProduct()
+    {
+        // Arrange
+        int productId = 1;
+
+        // Act
+        var result = productService.GetProductById(productId);
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.AreEqual(productId, result.Id);
+    }
+
+    [Test]
+    public void GetProductById_NonExistingProductId_ReturnsNull()
+    {
+        // Arrange
+        int productId = 99;
+
+        // Act
+        var result = productService.GetProductById(productId);
+
+        // Assert
+        Assert.IsNull(result);
+    }
+
+    [Test]
+    public void AddProduct_ValidProduct_ReturnsTrue()
+    {
+        // Arrange
+        var product = new Product
+        {
+            Id = 1,
+            Name = "Test Product",
+            Price = 10.99m
+        };
+
+        // Act
+        var result = productService.AddProduct(product);
+
+        // Assert
+        Assert.IsTrue(result);
+    }
+
+    [Test]
+    public void AddProduct_DuplicateProductId_ReturnsFalse()
+    {
+        // Arrange
+        var product = new Product
+        {
+            Id = 1,
+            Name = "Test Product",
+            Price = 10.99m
+        };
+
+        // Act
+        var result = productService.AddProduct(product);
+
+        // Assert
+        Assert.IsFalse(result);
+    }
+
+    // Add more test cases for other methods
+
+    // [Test]
+    // public void ...
+    // {
+    //     ...
+    // }
+}
