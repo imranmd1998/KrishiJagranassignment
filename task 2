@@ -1,1 +1,77 @@
+using System;
 
+// Define the interface for products
+public interface IProduct
+{
+    string Name { get; set; }
+    decimal Price { get; set; }
+    void DisplayDetails();
+}
+
+// Define the class for products
+public class Product : IProduct
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Product Details:");
+        Console.WriteLine("Name: " + Name);
+        Console.WriteLine("Price: $" + Price);
+    }
+}
+
+// Define the interface for orders
+public interface IOrder
+{
+    IProduct Product { get; set; }
+    int Quantity { get; set; }
+    decimal CalculateTotal();
+}
+
+// Define the class for orders
+public class Order : IOrder
+{
+    public IProduct Product { get; set; }
+    public int Quantity { get; set; }
+
+    public decimal CalculateTotal()
+    {
+        return Product.Price * Quantity;
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Create a product
+        IProduct product = new Product
+        {
+            Name = "Example Product",
+            Price = 10.99m
+        };
+
+        // Display product details
+        product.DisplayDetails();
+
+        // Create an order
+        IOrder order = new Order
+        {
+            Product = product,
+            Quantity = 5
+        };
+
+        // Calculate and display order total
+        decimal total = order.CalculateTotal();
+        Console.WriteLine("Order Total: $" + total);
+    }
+}
+
+Explain:
+The Product class implements the IProduct interface and provides the implementation for the Name, Price, and DisplayDetails() properties and method.
+
+The Order class implements the IOrder interface and provides the implementation for the Product, Quantity, and CalculateTotal() properties and method.
+
+In the Main method, we create an instance of the Product class and demonstrate how to display its details using the DisplayDetails() method. Then, we create an instance of the Order class, set its properties, and calculate the total using the CalculateTotal() method.
