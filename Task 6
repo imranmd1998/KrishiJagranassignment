@@ -1,0 +1,40 @@
+6)	A Basic product search feature. Sort the products based on pricing(Without using LINQ or any native sort method, this is very important) 
+
+Solution:
+1.Create a Product class or structure that represents a product and includes properties like Name, Price, etc.
+
+2.Store your products in an array or a collection.
+
+3.Implement a basic product search functionality where users can enter a search term and filter the products based on that term.
+
+4.Once the products are filtered based on the search term, implement a sorting algorithm to sort the products based on pricing.
+
+Here's an example implementation of the Bubble Sort algorithm:
+
+// Assuming you have an array called 'products' containing your products
+
+bool swapped;
+int n = products.Length;
+
+do
+{
+    swapped = false;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        // Compare product prices and swap if necessary
+        if (products[i].Price > products[i + 1].Price)
+        {
+            Product temp = products[i];
+            products[i] = products[i + 1];
+            products[i + 1] = temp;
+            swapped = true;
+        }
+    }
+
+    // After each iteration, the largest price will be at the end of the array
+    n--;
+
+} while (swapped);
+
+5.After sorting the products, you can display or use the sorted array for further processing based on your application's requirements.
