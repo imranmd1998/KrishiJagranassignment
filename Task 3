@@ -1,0 +1,84 @@
+3)	Use an ORM or any Native Data Access library to demonstrate:
+a)	Creating the Tables at Run-Time when the application runs for the first time
+b)	Update the Database Table Schema at Run-Time when a column is added to the table
+
+Solution:
+a) Creating the Tables at Run-Time:
+To create tables at run-time when the application runs for the first time, you can use Entity Framework Core's Code-First approach. Here's an example of how you can achieve this:
+
+1.Install Entity Framework Core NuGet package.
+Install-Package Microsoft.EntityFrameworkCore
+
+2.Define your model classes for the tables.
+using Microsoft.EntityFrameworkCore;
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+}
+
+public class Order
+{
+    public int Id { get; set; }
+    public string CustomerName { get; set; }
+    public DateTime OrderDate { get; set; }
+}
+
+3.Create a DbContext class representing the database context.
+using Microsoft.EntityFrameworkCore;
+
+public class YourDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Order> Orders { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        // Configure the database provider and connection string
+        optionsBuilder.UseSqlServer("YourConnectionString");
+    }
+}
+
+4.In your application's entry point, check if the database exists and create it if it doesn't.
+using Microsoft.EntityFrameworkCore;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        using (var context = new YourDbContext())
+        {
+            context.Database.EnsureCreated();
+        }
+
+        // Rest of your application logic
+    }
+}
+
+
+b) Updating the Database Table Schema at Run-Time:
+To update the database table schema at run-time when a column is added to the table, you can use Entity Framework Core's migrations feature. Here's an example
+
+1.Enable migrations for your project using the Package Manager Console.
+Add-Migration InitialCreate
+
+2.Apply the initial migration to create the initial schema in the database.
+Update-Database
+
+3.Modify your model class by adding a new property or making any other necessary changes.
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Description { get; set; } // New property added
+}
+
+4.Generate a new migration based on the changes.
+Add-Migration AddDescriptionColumn
+
+5.Apply the new migration to update the database schema.
+Update-Database
+
