@@ -1,0 +1,16 @@
+5)	Send automated messages to registered vendors when there’s a change in Specific Properties like the Price or Availability of the product.
+Solution:
+
+1.Set up an SMTP server or use a third-party email service provider that allows sending emails programmatically. Popular choices include SendGrid, Mailgun, or the SMTP server provided by your hosting service.
+
+2.Create a method or service that handles the notification logic. This method will be responsible for detecting changes in the product properties and sending email notifications to the registered vendors.
+
+3.Implement the logic to detect changes in the specific properties (price or availability) of the product. This can be done by comparing the current values with the previous values stored in the database or by using other mechanisms like triggers or event-driven architecture.
+
+4.When a change in the specific properties is detected, retrieve the list of registered vendors who need to be notified. This can be done by querying the database or any other storage mechanism where vendor details are stored.
+
+5.Use an email template to create the notification message. The template can include placeholders for the dynamic information like product name, new price, or availability. You can use a templating engine or simple string interpolation to populate the placeholders with the actual values.
+
+6.Use the SMTP server or email service provider to send the email notifications to the registered vendors. You will need to provide the necessary credentials and configurations to establish the connection and send emails programmatically. Most email service providers offer client libraries or APIs to facilitate this process.
+
+7.Test the automated email notification functionality by simulating changes in the specific properties and verifying that the notifications are sent to the appropriate vendors.
